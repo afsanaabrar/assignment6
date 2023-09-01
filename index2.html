@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi i am jebu</h1>
+    
+</body>
+</html>
+
+
+
+const div=document.createElement('div');
+        div.innerHTML=`
+        <div class="card w-72 bg-base-100 shadow-xl">
+                  <div class="relative">
+                  <img src="${display.thumbnail}" class="w-full h-[200px]">
+                  <div  class="bg-black text-white absolute right-2 bottom-2 text-[13px]  rounded-md" >${time}</div>
+                  </div>   
+               <div class="card-body">
+                  <div class="flex flex-row gap-5">
+                      <img src="${display.authors[0].profile_picture}" class="h-10 w-10 rounded-full">
+                      <h1>${display.title}</h1>
+                  </div>
+                  <div class="flex flex-row gap-5">
+                       <h1>${display.authors[0].profile_name}</h1>
+                       <img src="${display.authors[0].verified?'Group.svg':''}">
+                  </div>
+                  <div>
+                      <p>${display.others.views} views</p>
+                  </div>
+                </div>
+            </div>
+        `
+  
+   
+
