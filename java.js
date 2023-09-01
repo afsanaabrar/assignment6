@@ -9,7 +9,7 @@ const catagoriesName=async()=>{
 // catagoris name show
 const displayName=(nameCat)=>{
     const divContain=document.getElementById('catacontainer');
-    divContain.innerHTML=''
+    // divContain.innerHTML=''
     
       nameCat.forEach((nam)=>{
         const div=document.createElement('div');
@@ -19,9 +19,9 @@ const displayName=(nameCat)=>{
         divContain.appendChild(div)
 
       })
-
+      loadAllId(1000)
 }
-// displayName(1000)
+
 catagoriesName()
 
 // id fetch kora hoyece
@@ -29,32 +29,42 @@ const loadAllId= async (categoryId)=>{
     const res=await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data=await res.json();
     const catId=data.data;
-    //   console.log(catId)
-
+       console.log(catId)
+       
+       const displaySection=document.getElementById('displaySection')
+       displaySection.innerHTML=" ";
     // drawing button emplement section
-   const notFound=document.getElementById('notFound')
-    notFound.innerHTML=''
+    // const display=document.getElementById('notFound')
     if(catId.length===0){
         const div=document.createElement('div');
-        div.classList='w-[150px] ml-[600px]'
-        const imgElement=document.createElement('img')
-        imgElement.src='Icon.png'
-        div.appendChild(imgElement)
-        const p=document.createElement('p')
-       
-        p.innerText='Oops!! Sorry,There is no content here not found'
-        div.appendChild(p)
-        notFound.appendChild(div)
+        div.classList='w-[150px] ml-[600px] text-center';
+        div.innerHTML=`
+        <img src="Icon.png">
+        <p>Oops!! Sorry,There is no content here not found</p>
+        `
+        displaySection.appendChild(div)
      }
+
+
+     
 
 
 
 //    every id card showing section
-    const displaySection=document.getElementById('displaySection')
-    displaySection.innerHTML=" ";
+    
     catId.forEach((display)=>{
-
-    // time seatting on img section
+//    console.log(display)
+       
+   
+   
+   
+   
+   
+   
+   
+   
+   
+        // time seatting on img section
     d = Number(display.others.posted_date);
     let h = Math.floor(d / 3600);
     let m = Math.floor(d % 3600 / 60);
@@ -116,8 +126,10 @@ const sortedName=async()=>{
         return 0;
     })
     // display sorted card into container
-    const sortViewcontain=document.getElementById('sortView');
-    sortViewcontain.innerHTML=''
+    const displaySection=document.getElementById('displaySection')
+    displaySection.innerHTML=" ";
+    // const sortViewcontain=document.getElementById('sortView');
+    // sortViewcontain.innerHTML=''
     nameCat.forEach((display)=>{
         
     let d = Number(display.others.posted_date);
@@ -151,7 +163,7 @@ const sortedName=async()=>{
                 </div>
             </div>
         `
-        sortViewcontain.appendChild(div) ;
+        displaySection.appendChild(div) ;
         
     })
  

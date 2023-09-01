@@ -6,59 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>hi i am jebu</h1>
+    <h1>hi jebu</h1>
+    <button onclick="goBack()">go to the back</button>
+    
+    
+    
+    
+    <script>
+       const goBack=()=>{
+        window.location.href='index.html'
+       }
+    </script>
     
 </body>
 </html>
 
 
 
-const sortView=document.getElementById('sortView')
-       sortView.innerHTML=''
-      nameCat.forEach((display)=>{
-        //  console.log(display)
-       
-     d = Number(display.others.posted_date);
-        var h = Math.floor(d / 3600);
-        var m = Math.floor(d % 3600 / 60);
-        var s = Math.floor(d % 3600 % 60);
-    
-        var hDisplay = h > 0 ? h + (h == 1 ? " hour, ":"hours ") : "";
-        var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
-        const time=hDisplay + mDisplay
-    
-        const div=document.createElement('div')
-         div.innerHTML=`
-         <div class="card w-72 bg-base-100 shadow-xl">
-                  <div class="relative">
-                  <img src="${display.thumbnail}" class="w-full h-[200px]">
-                  <div  class="bg-black text-white absolute right-2 bottom-2 text-[13px]  rounded-md" >${time}</div>
-                  </div>   
-               <div class="card-body">
-                  <div class="flex flex-row gap-5">
-                      <img src="${display.authors[0].profile_picture}" class="h-10 w-10 rounded-full">
-                      <h1>${display.title}</h1>
-                  </div>
-                  <div class="flex flex-row gap-5">
-                       <h1>${display.authors[0].profile_name}</h1>
-                       <img src="${display.authors[0].verified?'Group.svg':''}">
-                  </div>
-                  <div>
-                      <p>${display.others.views} views</p>
-                  </div>
-                </div>
-            </div>
-         
-         `
-         sortView.appendChild(div)
-        })
-        
+const displaySect =document.getElementById('notFound')
+   displaySect.innerHTML=''
+   displaySect.innerText=''
 
-
-
-
-
-
-        customSort=(a,b)=>{
-            if(a.)
-        }
+   div.classList='w-[150px] ml-[600px]';
+   const imgElement=document.createElement('img')
+   imgElement.src='Icon.png'
+   div.appendChild(imgElement)
+   const p=document.createElement('p')
+   p.innerText='Oops!! Sorry,There is no content here not found'
+   div.appendChild(p)
