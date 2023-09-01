@@ -2,19 +2,18 @@ const catagoriesName=async()=>{
     const res= await fetch('https://openapi.programming-hero.com/api/videos/categories');
     const data=await res.json();
     const nameCat=data.data
-      console.log(nameCat)
     displayName(nameCat)
 }
 
 // catagoris name show
 const displayName=(nameCat)=>{
+
     const divContain=document.getElementById('catacontainer');
-    // divContain.innerHTML=''
-    
-      nameCat.forEach((nam)=>{
-        const div=document.createElement('div');
+       nameCat.forEach((nam)=>{
+
+       const div=document.createElement('div');
         div.innerHTML=`
-        <button onclick="loadAllId('${nam.category_id}')" class="bg-gray-400 py-1 px-3 rounded-md" id="btn">${nam.category}</button>
+        <button onclick="loadAllId('${nam.category_id}')" class="bg-gray-400 py-1 px-3 rounded-md font-normal text-sm" >${nam.category}</button>
                 `;
         divContain.appendChild(div)
 
@@ -29,7 +28,6 @@ const loadAllId= async (categoryId)=>{
     const res=await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data=await res.json();
     const catId=data.data;
-       console.log(catId)
        
        const displaySection=document.getElementById('displaySection')
        displaySection.innerHTML=" ";
@@ -37,10 +35,10 @@ const loadAllId= async (categoryId)=>{
     // const display=document.getElementById('notFound')
     if(catId.length===0){
         const div=document.createElement('div');
-        div.classList='w-[150px] ml-[600px] text-center';
+        div.classList='w-[150px] md:ml-[390px] lg:ml-[600px] text-center';
         div.innerHTML=`
         <img src="Icon.png">
-        <p>Oops!! Sorry,There is no content here not found</p>
+        <p class='font-bold mt-5'><span class='font-bold'>Oops!!</span> Sorry,There is no content here not found</p>
         `
         displaySection.appendChild(div)
      }
@@ -53,17 +51,7 @@ const loadAllId= async (categoryId)=>{
 //    every id card showing section
     
     catId.forEach((display)=>{
-//    console.log(display)
-       
-   
-   
-   
-   
-   
-   
-   
-   
-   
+
         // time seatting on img section
     d = Number(display.others.posted_date);
     let h = Math.floor(d / 3600);
@@ -84,7 +72,7 @@ const div=document.createElement('div');
                <div class="card-body">
                   <div class="flex flex-row gap-5">
                       <img src="${display.authors[0].profile_picture}" class="h-10 w-10 rounded-full">
-                      <h1>${display.title}</h1>
+                      <h1 class=' font-bold'>${display.title}</h1>
                   </div>
                   <div class="flex flex-row gap-5">
                        <h1>${display.authors[0].profile_name}</h1>
@@ -151,7 +139,7 @@ const sortedName=async()=>{
                <div class="card-body">
                   <div class="flex flex-row gap-5">
                       <img src="${display.authors[0].profile_picture}" class="h-10 w-10 rounded-full">
-                      <h1>${display.title}</h1>
+                      <h1 class=' font-bold'>${display.title}</h1>
                   </div>
                   <div class="flex flex-row gap-5">
                        <h1>${display.authors[0].profile_name}</h1>

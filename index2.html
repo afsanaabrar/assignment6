@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
-    <h1>hi jebu</h1>
-    <button onclick="goBack()">go to the back</button>
+<section class="max-w-4xl mx-auto ml-9">
+    <div class="lg:w-[700px] mb-11 text-left mt-11 ">
+        <h2 class='lg:text-lg font-bold'>Q: Discuss the scope of var, let, and const</h2>
+        <p><span class="font-bold">Ans: </span>var declarations are globally scoped or function scoped while let and const are block scoped. var variables can be updated and re-declared within its scope; let variables can be updated but not re-declared; const variables can neither be updated nor re-declared.</p>
+    </div>
+    <div class="lg:w-[700px] mb-11 text-left mt-11">
+       <h2 class='lg:text-lg font-bold'>Q:Tell us the use cases of null and undefined</h2>
+       <p><span class="font-bold">Ans: </span>Undefined means the variable has been declared, but its value has not been assigned. Null means an empty value or a blank value.</p> 
+    </div>
+    <div class="lg:w-[700px] mb-11 text-left mt-11">
+        <h2 class='lg:text-lg font-bold'>Q:What do you mean by REST API?
+        </h2>
+        <p><span class="font-bold">Ans: </span> API full meaning is application programming interface, it's a media that define how applications or devices can connect to and communicate with each other</p>
+    </div>
+    <div class="w-[700px] mb-11 text-left mt-11">
+        <button onclick="goBack()" class="btn btn-active btn-accent">Go back</button>
     
+    </div>
+</section>
+
+
+
+
+
     
     
     
@@ -20,17 +44,3 @@
     
 </body>
 </html>
-
-
-
-const displaySect =document.getElementById('notFound')
-   displaySect.innerHTML=''
-   displaySect.innerText=''
-
-   div.classList='w-[150px] ml-[600px]';
-   const imgElement=document.createElement('img')
-   imgElement.src='Icon.png'
-   div.appendChild(imgElement)
-   const p=document.createElement('p')
-   p.innerText='Oops!! Sorry,There is no content here not found'
-   div.appendChild(p)
