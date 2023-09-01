@@ -4,22 +4,15 @@ const catagoriesName=async()=>{
     const nameCat=data.data
       console.log(nameCat)
     displayName(nameCat)
-
-
 }
 
+// catagoris name show
 const displayName=(nameCat)=>{
-   
-
-
-
-
     const divContain=document.getElementById('catacontainer');
     divContain.innerHTML=''
     
       nameCat.forEach((nam)=>{
         const div=document.createElement('div');
-
         div.innerHTML=`
         <button onclick="loadAllId('${nam.category_id}')" class="bg-gray-400 py-1 px-3 rounded-md" id="btn">${nam.category}</button>
                 `;
@@ -31,16 +24,16 @@ const displayName=(nameCat)=>{
 // displayName(1000)
 catagoriesName()
 
-// id section
+// id fetch kora hoyece
 const loadAllId= async (categoryId)=>{
     const res=await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
     const data=await res.json();
     const catId=data.data;
-      console.log(catId)
+    //   console.log(catId)
 
-   
-    const notFound=document.getElementById('notFound')
-    notFound.innerHTML=' '
+    // drawing button emplement section
+   const notFound=document.getElementById('notFound')
+    notFound.innerHTML=''
     if(catId.length===0){
         const div=document.createElement('div');
         div.classList='w-[150px] ml-[600px]'
@@ -56,24 +49,22 @@ const loadAllId= async (categoryId)=>{
 
 
 
-
+//    every id card showing section
     const displaySection=document.getElementById('displaySection')
     displaySection.innerHTML=" ";
     catId.forEach((display)=>{
-        
-        
-        d = Number(display.others.posted_date);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
 
-    var hDisplay = h > 0 ? h + (h == 1 ? " hour, ":"hours ") : "";
-    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
+    // time seatting on img section
+    d = Number(display.others.posted_date);
+    let h = Math.floor(d / 3600);
+    let m = Math.floor(d % 3600 / 60);
+    let s = Math.floor(d % 3600 % 60);
+    let hDisplay = h > 0 ? h + (h == 1 ? " hour, ":"hours ") : "";
+    let mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
     const time=hDisplay + mDisplay
 
-
-   
-  const div=document.createElement('div');
+// container a card setting section
+const div=document.createElement('div');
         div.innerHTML=`
         <div class="card w-72 bg-base-100 shadow-xl">
                   <div class="relative">
@@ -100,36 +91,47 @@ const loadAllId= async (categoryId)=>{
     })
    
 }
-// for index2.html
+// calling another index2.html
 const handelSecondHtml=()=>{
     window.location.href='index2.html'
 }
 
 
-
+// sorting section
 const sortedName=async()=>{
     const res= await fetch('https://openapi.programming-hero.com/api/videos/category/1000');
     const data=await res.json();
     const nameCat=data.data
-    //    console.log(nameCat)
-    
-   const sortView=document.getElementById('sortView')
-       sortView.innerHTML=''
-      nameCat.forEach((display)=>{
-        //  console.log(display)
-       
-     d = Number(display.others.posted_date);
-        var h = Math.floor(d / 3600);
-        var m = Math.floor(d % 3600 / 60);
-        var s = Math.floor(d % 3600 % 60);
-    
-        var hDisplay = h > 0 ? h + (h == 1 ? " hour, ":"hours ") : "";
-        var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
-        const time=hDisplay + mDisplay
-    
-        const div=document.createElement('div')
-         div.innerHTML=`
-         <div class="card w-72 bg-base-100 shadow-xl">
+  console.log(nameCat)
+    // sorted part
+    nameCat.sort((city1,city2)=>{
+        city1=Number.parseFloat(city1.others.views);
+        city2=Number.parseFloat(city2.others.views);
+        if(city1>city2){
+            return -1;
+        }
+        else if(city1<city2){
+            return 1;
+        }
+        return 0;
+    })
+    // display sorted card into container
+    const sortViewcontain=document.getElementById('sortView');
+    sortViewcontain.innerHTML=''
+    nameCat.forEach((display)=>{
+        
+    let d = Number(display.others.posted_date);
+    let h = Math.floor(d / 3600);
+    let m = Math.floor(d % 3600 / 60);
+    let s = Math.floor(d % 3600 % 60);
+
+    let hDisplay = h > 0 ? h + (h == 1 ? " hour, ":"hours ") : "";
+    let mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
+    const time=hDisplay + mDisplay
+
+  const div=document.createElement('div');
+        div.innerHTML=`
+        <div class="card w-72 bg-base-100 shadow-xl">
                   <div class="relative">
                   <img src="${display.thumbnail}" class="w-full h-[200px]">
                   <div  class="bg-black text-white absolute right-2 bottom-2 text-[13px]  rounded-md" >${time}</div>
@@ -148,17 +150,18 @@ const sortedName=async()=>{
                   </div>
                 </div>
             </div>
-         
-         `
-         sortView.appendChild(div)
-        })
-        const dat=display.sort((a,b)=>{
-            if(a.display.others.views<b.display.others.views){
-                return -1
-            }
-        })
-        console.log(dat)
-}
+        `
+        sortViewcontain.appendChild(div) ;
+        
+    })
+ 
+ }
+
+
+
+
+
+
 
 
 

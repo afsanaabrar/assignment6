@@ -13,9 +13,23 @@
 
 
 
-const div=document.createElement('div');
-        div.innerHTML=`
-        <div class="card w-72 bg-base-100 shadow-xl">
+const sortView=document.getElementById('sortView')
+       sortView.innerHTML=''
+      nameCat.forEach((display)=>{
+        //  console.log(display)
+       
+     d = Number(display.others.posted_date);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
+        var s = Math.floor(d % 3600 % 60);
+    
+        var hDisplay = h > 0 ? h + (h == 1 ? " hour, ":"hours ") : "";
+        var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes") : "";
+        const time=hDisplay + mDisplay
+    
+        const div=document.createElement('div')
+         div.innerHTML=`
+         <div class="card w-72 bg-base-100 shadow-xl">
                   <div class="relative">
                   <img src="${display.thumbnail}" class="w-full h-[200px]">
                   <div  class="bg-black text-white absolute right-2 bottom-2 text-[13px]  rounded-md" >${time}</div>
@@ -34,7 +48,17 @@ const div=document.createElement('div');
                   </div>
                 </div>
             </div>
-        `
-  
-   
+         
+         `
+         sortView.appendChild(div)
+        })
+        
 
+
+
+
+
+
+        customSort=(a,b)=>{
+            if(a.)
+        }
